@@ -37,4 +37,6 @@ return require('packer').startup(function(use)
     use 'nvim-telescope/telescope-fzf-native.nvim'
     use 'nvim-telescope/telescope.nvim'
 
+    use 'simrat39/rust-tools.nvim'
+
 end)
