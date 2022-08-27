@@ -8,5 +8,7 @@ return require('packer').startup(function(use)
    requires = {
     'kyazdani42/nvim-web-devicons', -- optional, for file icons
   },
+
+  use { "ellisonleao/gruvbox.nvim" }
 }
 end)
