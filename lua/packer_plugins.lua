@@ -9,6 +9,16 @@ return require('packer').startup(function(use)
     'kyazdani42/nvim-web-devicons', -- optional, for file icons
   },
 
-  use { "ellisonleao/gruvbox.nvim" }
+  use { "ellisonleao/gruvbox.nvim" },
+
+  use 'nvim-treesitter/nvim-treesitter',
+  use {
+    'numToStr/Comment.nvim',
+},
+use 'JoosepAlviste/nvim-ts-context-commentstring',
+use("windwp/nvim-autopairs"),
+	use("windwp/nvim-ts-autotag"),
+
+
 }
 end)
