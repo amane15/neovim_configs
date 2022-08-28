@@ -1,6 +1,5 @@
 require("globals.options")
 require("globals.keymaps")
+require("globals.autocmds")
 require("packer_plugins")
-require("lsp.lsp_installer")
-require("lsp.handlers").setup()
-require("lsp.lsp_config")
+require("lsp")
