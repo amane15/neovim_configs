@@ -27,5 +27,6 @@ null_ls.setup({
 		formatting.stylua,
 		formatting.gofmt,
 		formatting.rustfmt,
+		formatting.clang_format,
 	},
 })

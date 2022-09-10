@@ -188,6 +188,12 @@ require("lspconfig")["pyright"].setup({
 	on_attach = on_attach,
 	capabilities = capabilities,
 })
+
+require("lspconfig")["clangd"].setup({
+	on_attach = on_attach,
+	capabilities = capabilities,
+})
+
 --[[ require("lspconfig")["clangd"].setup({}) ]]
 require("lspconfig")["gopls"].setup({
 	on_attach = on_attach,
@@ -235,6 +241,8 @@ require("lspconfig")["jsonls"].setup({
 					".eslintrc",
 					"package.json",
 					"tsconfig.json",
+					"dockerd.json",
+					"prettierrc.json",
 				},
 			}),
 			validate = { enable = true },

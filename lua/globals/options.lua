@@ -24,7 +24,6 @@ vim.o.signcolumn = "auto"
 vim.o.splitright = true
 vim.o.autoindent = true
 vim.o.completeopt = "menu,menuone,noselect"
-vim.o.clipboard = "unnamedplus"
+vim.o.clipboard = "unnamed"
 vim.o.signcolumn = "yes"
 vim.o.hidden = true
-

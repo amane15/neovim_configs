@@ -29,6 +29,8 @@ keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 keymap("v", "<A-j>", ":m .+1<CR>==", opts)
 keymap("v", "<A-k>", ":m .-2<CR>==", opts)
 keymap("v", "p", "_dP", opts)
+keymap("v", "J", ":m '>+1<CR>gv=gv", opts)
+keymap("v", "K", ":m '<-2<CR>gv=gv", opts)
 
 -- Telescope keymaps
 keymap("", "<leader>fg", "<cmd>Telescope live_grep<cr>", opts)
@@ -39,18 +41,9 @@ keymap("", "<leader>gd", "<cmd>Telescope lsp_definitions<cr>", opts)
 keymap("", "<leader>gr", "<cmd>Telescope lsp_references<cr>", opts)
 
 -- Nvim Tree
-keymap("", "<leader>e", ":NvimTreeToggle<CR>", opts)
+keymap("", "<A-e>", ":NvimTreeToggle<CR>", opts)
 
 keymap("", "<leader>p", ":lua print(vim.inspect(vim.lsp.buf_get_clients()[1].resolved_capabilities))<cr>", opts)
-
---[[ vim.api.nvim_create_autocmd("BufWritePre", { ]]
---[[ 	group = augroup, ]]
---[[ 	buffer = bufnr, ]]
---[[ 	callback = function() ]]
---[[ 		-- on 0.8, you should use vim.lsp.buf.format({ bufnr = bufnr }) instead ]]
---[[ 		vim.lsp.buf.formatting_sync() ]]
---[[ 	end, ]]
---[[ }) ]]
 
 -- lsp keymaps
 vim.keymap.set("n", "<space>e", vim.diagnostic.open_float, opts)

@@ -3,9 +3,7 @@ require("nvim-tree").setup({
 	view = {
 		adaptive_size = true,
 		mappings = {
-			list = {
-				{ key = "u", action = "dir_up" },
-			},
+			list = {},
 		},
 	},
 	renderer = {
@@ -38,7 +36,8 @@ require("nvim-tree").setup({
 		},
 	},
 	filters = {
-		dotfiles = true,
+		dotfiles = false,
+		custom = { "^.git$", "^.vscode$" },
 	},
 	diagnostics = {
 		enable = true,
