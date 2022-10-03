@@ -3,6 +3,16 @@ local null_ls = require("null-ls")
 local formatting = null_ls.builtins.formatting
 local diagnostics = null_ls.builtins.diagnostics
 
+local lsp_formatting = function(bufnr)
+	vim.lsp.buf.format({
+		filter = function(client)
+			-- apply whatever logic you want (in this example, we'll only use null-ls)
+			return client.name == "null-ls"
+		end,
+		bufnr = bufnr,
+	})
+end
+
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 null_ls.setup({
 	on_attach = function(client, bufnr)
@@ -13,7 +23,7 @@ null_ls.setup({
 				buffer = bufnr,
 				callback = function()
 					-- on 0.8, you should use vim.lsp.buf.format({ bufnr = bufnr }) instead
-					vim.lsp.buf.formatting_sync({}, 2000)
+					lsp_formatting(bufnr)
 				end,
 			})
 		end

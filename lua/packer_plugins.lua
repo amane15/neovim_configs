@@ -9,7 +9,6 @@ return require("packer").startup(function(use)
 			"kyazdani42/nvim-web-devicons", -- optional, for file icons
 		},
 	})
-	use("ellisonleao/gruvbox.nvim")
 
 	use("nvim-treesitter/nvim-treesitter")
 	use("numToStr/Comment.nvim")
@@ -48,4 +47,6 @@ return require("packer").startup(function(use)
 	use("lukas-reineke/indent-blankline.nvim")
 
 	use("b0o/schemastore.nvim")
+
+	use("luisiacc/gruvbox-baby")
 end)

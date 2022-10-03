@@ -114,10 +114,10 @@ _G.packer_plugins = {
     path = "/home/atul/.local/share/nvim/site/pack/packer/start/gitsigns.nvim",
     url = "https://github.com/lewis6991/gitsigns.nvim"
   },
-  ["gruvbox.nvim"] = {
+  ["gruvbox-baby"] = {
     loaded = true,
-    path = "/home/atul/.local/share/nvim/site/pack/packer/start/gruvbox.nvim",
-    url = "https://github.com/ellisonleao/gruvbox.nvim"
+    path = "/home/atul/.local/share/nvim/site/pack/packer/start/gruvbox-baby",
+    url = "https://github.com/luisiacc/gruvbox-baby"
   },
   ["indent-blankline.nvim"] = {
     loaded = true,

@@ -148,10 +148,6 @@ cmp.setup.cmdline(":", {
 local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 local on_attach = function(client, bufnr)
-	--[[ if client.name == "sumneko_lua" then ]]
-	client.server_capabilities.document_formatting = false
-	client.resolved_capabilities.document_formatting = false
-	--[[ end ]]
 	-- Enable completion triggered by <c-x><c-o>
 	vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
@@ -231,6 +227,19 @@ require("lspconfig")["dockerls"].setup({
 	on_attach = on_attach,
 	capabilities = capabilities,
 })
+
+require("lspconfig")["yamlls"].setup({
+	on_attach = on_attach,
+	capabilities = capabilities,
+	settings = {
+		yaml = {
+			schemas = {
+				"https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json",
+			},
+		},
+	},
+})
+
 require("lspconfig")["jsonls"].setup({
 	on_attach = on_attach,
 	capabilities = capabilities,
