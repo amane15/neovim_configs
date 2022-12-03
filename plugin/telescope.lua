@@ -12,6 +12,11 @@ telescope.setup({
 		path_display = { "smart" },
 		file_ignore_patterns = { "target" },
 		find_files = { hidden = true },
+		layout_config = {
+			horizontal = {
+				preview_cutoff = 0,
+			},
+		},
 
 		mappings = {
 			i = {

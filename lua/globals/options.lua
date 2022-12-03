@@ -27,3 +27,4 @@ vim.o.completeopt = "menu,menuone,noselect"
 vim.o.clipboard = "unnamed"
 vim.o.signcolumn = "yes"
 vim.o.hidden = true
+vim.o.cmdheight = 0
