@@ -1,9 +1,30 @@
 -- Reference: https://github.com/hrsh7th/nvim-cmp
 local luasnip = require("luasnip")
 local util = require("vim.lsp.util")
+local configs = require("lspconfig/configs")
+local util = require("lspconfig/util")
 -- Setup nvim-cmp
 local cmp = require("cmp")
 require("luasnip/loaders/from_vscode").lazy_load()
+local path = util.path
+
+local function get_python_path(workspace)
+	-- Use activated virtualenv.
+	if vim.env.VIRTUAL_ENV then
+		return path.join(vim.env.VIRTUAL_ENV, "bin", "python")
+	end
+
+	-- Find and use virtualenv in workspace directory.
+	for _, pattern in ipairs({ "*", ".*" }) do
+		local match = vim.fn.glob(path.join(workspace, pattern, "pyvenv.cfg"))
+		if match ~= "" then
+			return path.join(path.dirname(match), "bin", "python")
+		end
+	end
+
+	-- Fallback to system Python.
+	return exepath("python3") or exepath("python") or "python"
+end
 
 -- check for backspacing
 local check_backspace = function()
@@ -145,7 +166,7 @@ cmp.setup.cmdline(":", {
 })
 
 -- Setup lspconfig.
-local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 local on_attach = function(client, bufnr)
 	-- Enable completion triggered by <c-x><c-o>
@@ -183,6 +204,9 @@ require("lspconfig")["tsserver"].setup({
 require("lspconfig")["pyright"].setup({
 	on_attach = on_attach,
 	capabilities = capabilities,
+	before_init = function(_, config)
+		config.settings.python.pythonPath = get_python_path(config.root_dir)
+	end,
 })
 
 require("lspconfig")["clangd"].setup({
@@ -224,6 +248,11 @@ require("lspconfig")["graphql"].setup({
 	capabilities = capabilities,
 })
 require("lspconfig")["dockerls"].setup({
+	on_attach = on_attach,
+	capabilities = capabilities,
+})
+
+require("lspconfig")["taplo"].setup({
 	on_attach = on_attach,
 	capabilities = capabilities,
 })

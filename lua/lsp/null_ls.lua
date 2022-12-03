@@ -5,6 +5,7 @@ local diagnostics = null_ls.builtins.diagnostics
 
 local lsp_formatting = function(bufnr)
 	vim.lsp.buf.format({
+		timeout_ms = 2000,
 		filter = function(client)
 			-- apply whatever logic you want (in this example, we'll only use null-ls)
 			return client.name == "null-ls"
@@ -31,7 +32,7 @@ null_ls.setup({
 
 	debug = false,
 	sources = {
-		formatting.prettier.with({ extra_args = {} }),
+		formatting.prettier,
 		formatting.autopep8,
 		diagnostics.flake8,
 		formatting.stylua,
